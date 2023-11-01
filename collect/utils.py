@@ -332,13 +332,12 @@ def extract_patches(pull: Dict, repo: Repo) -> Tuple[str, str]:
                 if ("test" in words or "tests" in words or "testing" in words)
                 else "diff"
             )
-            if flag != "test" and not line.strip().endswith(".py"):
-                flag = None
         # Append line to separate patch depending on flag status
         if flag == "test":
             patch_test.append(line)
         elif flag == "diff":
             patch_change.append(line)
+
 
     patch_change_str = "\n".join(patch_change) + "\n" if len(patch_change) > 0 else ""
     patch_test_str = "\n".join(patch_test) + "\n" if len(patch_test) > 0 else ""
