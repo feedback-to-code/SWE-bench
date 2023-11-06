@@ -189,10 +189,13 @@ class AutoContextManager(ContextManager):
         self.root_dir = root_dir
         repo_dir = os.path.join(self.root_dir, instance["repo"].replace("/", "__"))
         if not os.path.exists(repo_dir):
+            # repo_url = (
+            #     f"https://{token}@github.com/swe-bench/"
+            #     + instance["repo"].replace("/", "__")
+            #     + ".git"
+            # )
             repo_url = (
-                f"https://{token}@github.com/swe-bench/"
-                + instance["repo"].replace("/", "__")
-                + ".git"
+               f"https://{token}@github.com/{instance['repo']}.git"
             )
             if verbose:
                 print(f"Cloning {instance['repo']} to {root_dir}")
