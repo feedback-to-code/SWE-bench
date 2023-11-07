@@ -288,7 +288,7 @@ def full_file_gen(instance):
 def ingest_files(filenames):
     files_dict = dict()
     for filename in filenames:
-        with open(filename) as f:
+        with open(filename, errors='ignore') as f:
             content = f.read()
         files_dict[filename] = content
     return files_dict
