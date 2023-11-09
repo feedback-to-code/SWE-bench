@@ -17,6 +17,9 @@ from datasets import load_dataset, load_from_disk
 from make_datasets.utils import extract_diff
 from argparse import ArgumentParser
 import logging
+import tiktoken
+
+encoding = tiktoken.encoding_for_model("gpt-3.5-turbo-16k")
 
 logging.basicConfig(level=logging.INFO, format="%(asctime)s %(levelname)s %(message)s")
 logger = logging.getLogger(__name__)
@@ -173,8 +176,16 @@ def openai_inference(
         "model_name_or_path": model_name_or_path,
     }
     total_cost = 0
+    for data_thing in test_dataset:
+        print(len(encoding.encode(data_thing["text"])))
     if 'input_ids' in test_dataset.features:
         test_dataset = test_dataset.filter(lambda x: len(x['input_ids']) <= MODEL_LIMITS[model_name_or_path])
+    for i, data_thing in enumerate(test_dataset):
+        print(len(encoding.encode(data_thing["text"])))
+        # print(data_thing["text"])
+        # if i>= 2:
+        #     break
+    test_dataset = test_dataset.filter(lambda x: len(encoding.encode(x["text"]))+10 <= 16000)
     print(f"Filtered to {len(test_dataset)} instances")
     with open(output_file, "a+") as f:
         for datum in tqdm(test_dataset, desc=f"Inference for {model_name_or_path}"):
@@ -188,6 +199,13 @@ def openai_inference(
                 output_dict["full_output"] = None
                 output_dict["model_patch"] = None
             else:
+                # print(output_dict)
+                # print(use_azure)
+                # print(temperature)
+                # print(top_p)
+                # print(output_dict["model_name_or_path"])
+                # print(output_dict["text"])
+                print(len(encoding.encode(output_dict["text"])))
                 response, cost = call_chat(
                     output_dict["model_name_or_path"], output_dict["text"], use_azure, temperature, top_p
                 )
