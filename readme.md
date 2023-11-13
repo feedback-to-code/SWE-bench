@@ -1,0 +1,12 @@
+Tutorial
+- Connect to SWE-Bench Vm
+	- cd into folder which has tills key
+	- do ssh -i "till.pem" ubuntu@ec2-3-79-153-168.eu-central-1.compute.amazonaws.com
+	- type yes
+- do cd SWE-bench/inference/make_datasets/ 
+- do conda activate env_3_10
+- do export HUGGING_FACE_HUB_TOKEN=<hugging_face_token>
+- **It is very Important that you log into hugginface first then run the command, if you run the command once caching will be diabled for some reason and then you won't be able to log into huggingface until the connection to the vm is restarted**
+- do huggingface-cli login
+	- paste your huggingface token
+- run ~/miniconda3/envs/env_3_10/bin/python create_text_dataset.py --dataset_name_or_path feedback-to-code/Corona-Warn-App-1 --push_to_hub_user feedback-to-code --prompt_style style-3 --file_source oracle 
