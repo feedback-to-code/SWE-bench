@@ -1,4 +1,5 @@
 [core]
     remote = storage
 ['remote "storage"']
-    url = /hpi/fs00/share/fg/herbrich/feedback2code/
+    url = ssh://till.wenke@lx01.delab.i.hpi.de/hpi/fs00/share/fg/herbrich/feedback2code/
+    ask_password = true
