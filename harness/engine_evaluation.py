@@ -137,6 +137,8 @@ def main(args):
 
     predictions = get_instances(args.predictions_path)
 
+    print(">>>", args.predictions_path)
+
     # Remove predictions that have already been evaluated
     if args.skip_existing:
         predictions_filtered = []

@@ -1,9 +1,7 @@
 #!/bin/bash
 python run_evaluation.py \
-    --predictions_path "<path to predictions (.json)>" \
-    --swe_bench_tasks "<path to `swe-bench.json`>" \
-    --log_dir "<path to folder>" \
-    --testbed "<path to folder>" \
-    --skip_existing \
-    --timeout 900 \
+    --predictions_path "../data/cwa_server/predictions.json" \
+    --swe_bench_tasks "../data/cwa_server/cwa-server-task-instances.json" \
+    --log_dir "./log_dir" \
+    --testbed "./testbed" \
     --verbose

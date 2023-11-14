@@ -324,6 +324,7 @@ MAP_REPO_TO_TEST_FRAMEWORK = {
     "sphinx-doc/sphinx": "tox -epy39 -v --",
     "sqlfluff/sqlfluff": TEST_PYTEST,
     "sympy/sympy": "bin/test -C --verbose",
+    "corona-warn-app/cwa-server": "mvn test",
 }
 
 # Constants - Task Instance Version Extraction
@@ -390,8 +391,8 @@ MAP_REPO_TO_ENV_YML_PATHS = {
 
 # Constants - Evaluation Keys
 KEY_INSTANCE_ID = "instance_id"
-KEY_MODEL = "model"
-KEY_PREDICTION = "prediction"
+KEY_MODEL = "model_name_or_path"
+KEY_PREDICTION = "full_output"
 
 # Constants - Logging
 APPLY_PATCH_FAIL = ">>>>> Patch Apply Failed"

@@ -251,6 +251,7 @@ def split_instances(input_list: List, n: int) -> List:
     Returns:
         result (list): List of sublists
     """
+    print(">>>>>>",input_list, n)
     avg_length = len(input_list) // n
     remainder = len(input_list) % n
     result, start = [], 0

@@ -90,65 +90,68 @@ def main(
         for p in predictions:
             repo = p[KEY_INSTANCE_ID].rsplit("-", 1)[0]
             if repo not in map_repo_version_to_predictions:
-                map_repo_version_to_predictions[repo] = {}
+                map_repo_version_to_predictions[repo] = []
             t = tasks_map[p[KEY_INSTANCE_ID]]
             p.update(t)
-            version = t["version"]
-            if version not in map_repo_version_to_predictions[repo]:
-                map_repo_version_to_predictions[repo][version] = []
-            map_repo_version_to_predictions[repo][version].append(p)
+            # version = t["version"]
+            # if version not in map_repo_version_to_predictions[repo]:
+            #     map_repo_version_to_predictions[repo][version] = []
+            map_repo_version_to_predictions[repo].append(p)
         
         # For each model/repo/version, create testbed folder and save predictions
+        print(map_repo_version_to_predictions)
         for repo in map_repo_version_to_predictions:
-            for version in map_repo_version_to_predictions[repo]:
-                # Create testbed folder + file for model/repo/version specific predictions
-                testbed_model_repo_version_dir = os.path.join(testbed, model, repo, version)
-                os.makedirs(testbed_model_repo_version_dir, exist_ok=True)
-                file_name = f"{model}_{repo}_{version}_{predictions_path.split('/')[-1]}"
-                file_path = os.path.join(testbed_model_repo_version_dir, file_name)
-                with open(file_path, "w") as f:
-                    args = argparse.Namespace()
-                    args.log_dir = os.path.join(log_dir, model)
-                    args.temp_dir = testbed_model_repo_version_dir
-                    args.num_workers = 1
-                    args.timeout = timeout
-                    args.skip_existing = skip_existing
-                    args.verbose = verbose
+            # for version in map_repo_version_to_predictions[repo]:
+            # Create testbed folder + file for model/repo/version specific predictions
+            testbed_model_repo_version_dir = os.path.join(testbed, model, repo)
+            os.makedirs(testbed_model_repo_version_dir, exist_ok=True)
+            file_name = f"{model}_{repo}_{predictions_path.split('/')[-1]}"
+            file_path = os.path.join(testbed_model_repo_version_dir, file_name)
+            with open(file_path, "w") as f:
+                args = argparse.Namespace()
+                args.log_dir = os.path.join(log_dir, model)
+                args.temp_dir = testbed_model_repo_version_dir
+                args.num_workers = 1
+                args.timeout = timeout
+                args.skip_existing = skip_existing
+                args.verbose = verbose
 
-                    repo_version_predictions = map_repo_version_to_predictions[repo][version]
-                    if skip_existing:
-                        # Skip logs that already exist
-                        predictions_filtered = []
-                        for p in repo_version_predictions:
-                            log_file = os.path.join(
-                                args.log_dir,
-                                f"{p[KEY_INSTANCE_ID]}.{p[KEY_MODEL]}.eval.log",
-                            )
-                            if not os.path.exists(log_file):
-                                predictions_filtered.append(p)
-                        if len(predictions_filtered) == 0:
-                            logger.info(f"[{model}/{repo}/{version}] All predictions already exist, skipping")
-                            continue
-                        else:
-                            logger.info(
-                                f"[{model}/{repo}/{version}] # of predictions to evaluate: {len(predictions_filtered)} " + 
-                                f"({len(repo_version_predictions) - len(predictions_filtered)} already evaluated)"
-                            )
-                            repo_version_predictions = predictions_filtered
+                repo_version_predictions = map_repo_version_to_predictions[repo]
+                if skip_existing:
+                    # Skip logs that already exist
+                    predictions_filtered = []
+                    for p in repo_version_predictions:
+                        log_file = os.path.join(
+                            args.log_dir,
+                            f"{p[KEY_INSTANCE_ID]}.{p[KEY_MODEL]}.eval.log",
+                        )
+                        if not os.path.exists(log_file):
+                            predictions_filtered.append(p)
+                    if len(predictions_filtered) == 0:
+                        logger.info(f"[{model}/{repo}] All predictions already exist, skipping")
+                        continue
                     else:
-                        logger.info(f"[{model}/{repo}/{version}] # of predictions to evaluate: {len(repo_version_predictions)}")
+                        logger.info(
+                            f"[{model}/{repo}] # of predictions to evaluate: {len(predictions_filtered)} " + 
+                            f"({len(repo_version_predictions) - len(predictions_filtered)} already evaluated)"
+                        )
+                        repo_version_predictions = predictions_filtered
+                else:
+                    logger.info(f"[{model}/{repo}] # of predictions to evaluate: {len(repo_version_predictions)}")
 
-                    json.dump(repo_version_predictions, f, indent=4)
-                    args.predictions_path = file_path
+                print(repo_version_predictions)
+                json.dump(repo_version_predictions, f, indent=4)
+                args.predictions_path = file_path
 
-                    eval_args.append(args)
-                temp_dirs.append(testbed_model_repo_version_dir)
+                eval_args.append(args)
+            temp_dirs.append(testbed_model_repo_version_dir)
     
     # Run evaluation on each model/repo
-    pool = Pool(processes=len(eval_args))
-    pool.map(eval_engine, eval_args)
-    pool.close()
-    pool.join()
+    # pool = Pool(processes=len(eval_args))
+    # pool.map(eval_engine, eval_args)
+    # pool.close()
+    # pool.join()
+    eval_engine(eval_args[0])
 
     # Clean up
     for temp_dir in temp_dirs:
@@ -167,3 +170,4 @@ if __name__ == "__main__":
     args = parser.parse_args()
     logger.propagate = args.verbose
     main(**vars(args))
+3

@@ -252,10 +252,26 @@ def main(args):
     if any([x == args.retrieval_method for x in ["github", "mix"]]):
         manager = Manager()
         shared_result_list = manager.list()
-        pool = Pool(processes=args.num_workers)
-        pool.map(
-            get_versions_from_web,
-            [
+        # pool = Pool(processes=args.num_workers)
+        # pool.map(
+        #     get_versions_from_web,
+            # [
+            #     {
+            #         "data_tasks": data_task_list,
+            #         "save_path": f"{repo_prefix}_versions_{i}.json"
+            #         if args.retrieval_method == "github"
+            #         else f"{repo_prefix}_versions_{i}_web.json",
+            #         "not_found_list": shared_result_list
+            #         if args.retrieval_method == "mix"
+            #         else None,
+            #     }
+            #     for i, data_task_list in enumerate(data_task_lists)
+            # ],
+        # )
+        # pool.close()
+        # pool.join()
+
+        input = [
                 {
                     "data_tasks": data_task_list,
                     "save_path": f"{repo_prefix}_versions_{i}.json"
@@ -266,10 +282,11 @@ def main(args):
                     else None,
                 }
                 for i, data_task_list in enumerate(data_task_lists)
-            ],
-        )
-        pool.close()
-        pool.join()
+            ][0]
+        
+        logger.info(input)
+
+        get_versions_from_web(input)
 
         if args.retrieval_method == "github":
             # If retrieval method is just GitHub, then merge results and return
