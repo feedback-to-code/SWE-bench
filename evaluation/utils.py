@@ -58,31 +58,36 @@ def view_prs(
     git.commit("--all", "--message=applied real patch")
     git.push("--set-upstream", "origin", real_patch_branch)
     
+    patch = True
     try:
         git.switch(pred_patch_branch)
         git.apply(predicted_patch_path, "--whitespace=fix")
         git.commit("--all", "--message=apply predicted patch")
         git.push("--set-upstream", "origin", pred_patch_branch)
-        os.chdir(repo_path)
-
-        # create prs
-        os.system(
-            f'gh pr create --title "view real patch" --body "." --base {viewing_branch} --head {real_patch_branch}'
-        )
-        os.system(
-            f'gh pr create --title "view predicted patch" --body "." --base {viewing_branch} --head {pred_patch_branch}'
-        )
-
-        print(f"\nSuccessfully created PRs! See them on github.")
-        print(f"Branch patches should be merged to.")
-        print(f"https://github.com/feedback-to-code/cwa-server/tree/{viewing_branch}")
-        print(f"You can find links to the patch PRs above.\n")
-
     except GitCommandError as e:
         print(e)
-        print("Could not apply predicted patch.")
+        print("Could not apply predicted patch. Note this in Google Sheet.")
+        patch = False
 
-        # cleanup?
+    os.chdir(repo_path)
+
+    # create prs
+    if patch:
+        try:        
+            os.system(
+                f'gh pr create --title "view real patch" --body "." --base {viewing_branch} --head {real_patch_branch}'
+            )
+            os.system(
+                f'gh pr create --title "view predicted patch" --body "." --base {viewing_branch} --head {pred_patch_branch}'
+            )
+
+            print(f"\nSuccessfully created PRs! See them on github.")
+            print(f"Branch patches should be merged to.")
+            print(f"https://github.com/feedback-to-code/cwa-server/tree/{viewing_branch}")
+            print(f"You can find links to the patch PRs above.\n")
+        except:
+            print("Could not create PRs.")
+
 
 
 def cleanup_repo(repo_path: str, pr_number: int):
