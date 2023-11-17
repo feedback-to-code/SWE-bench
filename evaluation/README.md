@@ -14,3 +14,5 @@ in this repo go to `evaluation` dir.
 `dvc pull` the data
 
 run `python3 human_eval.py`
+
+From here on follow what is written in the terminal and read carefully :)
