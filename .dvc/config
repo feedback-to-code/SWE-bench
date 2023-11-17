@@ -2,4 +2,3 @@
     remote = storage
 ['remote "storage"']
     url = ssh://user@lx01.delab.i.hpi.de/hpi/fs00/share/fg/herbrich/feedback2code/swe-bench/
-    ask_password = true

@@ -8,6 +8,7 @@ dependencies:
     - dvc-ssh
     - ghapi
     - GitPython
+    - pandas
     - python-dotenv
     - requests
     - rich
