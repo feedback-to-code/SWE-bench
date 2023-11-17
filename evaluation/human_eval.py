@@ -12,7 +12,7 @@ def main(args, loglevel):
     logging.info(f"Feel free to add new columns if you want to point towards something that does not fit in the existing columns.")
     pr_number = input("PR number: ")
 
-    df = pd.read_csv("../data/cwa_server/evaluation.csv", index_col="id")
+    df = pd.read_csv("../fake_data/evaluation.csv", index_col="id")
     this = df.loc[int(pr_number)]
 
     logging.info("Creating patch files.")
