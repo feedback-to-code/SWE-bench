@@ -66,9 +66,23 @@ def view_prs(
         git.push("--set-upstream", "origin", pred_patch_branch)
     except GitCommandError as e:
         print(e)
-        print("Could not apply predicted patch. Note this in Google Sheet.")
+        print("\nCould not apply predicted patch. Note this in Google Sheet.")
+        print("We want to find out why it failed to apply. For this do the following:")
+        print(f"Go into {repo_path}. You should be on the {viewing_branch} branch.")
+        print("Apply the patch manually running:")
+        print(f"git apply {predicted_patch_path} --whitespace=fix --reject --verbose")
+        print("This will show you the conflicts. It is possible that some hunks can be applied.")
+        print("Take a look at the hunks that can/ cannot be applied - note interesting finding in Google Sheet.")
+        print("What are the problems why it cannot be applied")
+        print("Try to modify the patch file so that it can be applied.")
+        print("This might be of interest if there is just a tiny problem with some of the hunks.")
+        print("If you were successful fully applying the patch, put the code of your")
+        print("modified patch file into the Google Sheet column modified_patch.")
+        print("At the end, git stash and go back to the evaluation run.\n")
+
         patch = False
 
+    git.switch(viewing_branch)
     os.chdir(repo_path)
 
     # create prs
