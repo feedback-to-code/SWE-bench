@@ -17,6 +17,7 @@ def main(args, loglevel):
 
     logging.info("Creating patch files.")
     # create temporary patch files
+    os.mkdir("./tmp/")
     patch = this["patch"]
     with open("./tmp/real.patch", "w") as diff_file:
         diff_file.write(patch)
