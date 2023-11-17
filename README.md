@@ -16,22 +16,6 @@ Code and data for paper "<a href="http://swe-bench.github.io/paper.pdf">SWE-benc
         <img alt="License" src="https://img.shields.io/badge/License-MIT-blue">
     </a>
 </p>
-
-EVAL
-
-on scorelab
-
-have this repo and cwa-server cloned in your home dir on scorelab side-by-side
-in this repo: `conda env create file=environement.yml` and activate the env.
-
-on cwa server repo run `gh repo set-default` and set our fork as default.
-
-
-in this repo go to `evaluation` dir.
-dvc pull the data
-
-run `python3 create_patchfiles.py`
-
 -----------------------
 Please refer our [website](http://swe-bench.github.io) for the public leaderboard and the [change log](https://github.com/princeton-nlp/SWE-bench/blob/master/CHANGELOG.md) for information on the latest updates to the SWE-bench benchmark.
 
