@@ -17,6 +17,19 @@ Code and data for paper "<a href="http://swe-bench.github.io/paper.pdf">SWE-benc
     </a>
 </p>
 
+EVAL
+
+on scorelab
+
+conda env create file=environement.yml
+have this repo and cwa-server cloned in your home dir on scorelab side-by-side
+on cwa server run `gh repo set-default` and set our fork as default.
+
+if not present create tmp/all.csv -> run merge_golden_predictions.py
+
+run python3 create_patchfiles.py <pr_number>
+
+-----------------------
 Please refer our [website](http://swe-bench.github.io) for the public leaderboard and the [change log](https://github.com/princeton-nlp/SWE-bench/blob/master/CHANGELOG.md) for information on the latest updates to the SWE-bench benchmark.
 
 ## 👋 Overview
