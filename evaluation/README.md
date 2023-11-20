@@ -3,6 +3,7 @@
 on scorelab
 
 first you have to install miniconda https://docs.conda.io/projects/conda/en/latest/user-guide/install/linux.html
+see https://docs.conda.io/projects/miniconda/en/latest/#quick-command-line-install for instructions
 
 have THIS repo and our fork of [cwa-server](https://github.com/feedback-to-code/cwa-server) cloned in your home dir on scorelab side-by-side.
 
