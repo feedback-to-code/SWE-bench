@@ -78,6 +78,8 @@ def view_prs(
         print("This might be of interest if there is just a tiny problem with some of the hunks.")
         print("If you were successful fully applying the patch, put the code of your")
         print("modified patch file into the Google Sheet column modified_patch.")
+        print("Take care when pasting the patch it format is like this")
+        print("that it can be applied when reading from this table.")
         print("At the end, git stash and go back to the evaluation run.\n")
 
         patch = False

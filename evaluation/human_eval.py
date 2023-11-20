@@ -9,6 +9,7 @@ def main(args, loglevel):
 
     logging.info(f"Choose unevaluated PR number from https://docs.google.com/spreadsheets/d/1KU2sSywl2VTK6JdVa73eC9r1UbhtMP9yaKb2gF5qmw0/edit?usp=sharing")
     logging.info(f"And document your findings there.")
+    logging.info(f"When documenting try to align with the format other people used.")
     logging.info(f"Feel free to add new columns if you want to point towards something that does not fit in the existing columns.")
     pr_number = input("PR number: ")
 
@@ -41,6 +42,7 @@ def main(args, loglevel):
     logging.info(this.pr_link)
     logging.info(f"Original issue.")
     logging.info(this.issue_link)
+    logging.info(f"You are at base commit {this.base_commit}.")
 
     logging.info("Done with reviewing PRs? Mark as done in Google Sheet.")
     logging.info("'Enter' to continue.")
