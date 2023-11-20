@@ -11,7 +11,6 @@ in cwa server repo run `gh repo set-default` and set our fork as default.
 
 in THIS repo go to `evaluation` dir.
 
-`dvc pull` the data
 
 run `python3 human_eval.py`
 
