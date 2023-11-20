@@ -6,10 +6,10 @@ have THIS repo and our fork of [cwa-server](https://github.com/feedback-to-code/
 
 in THIS repo run `conda env create file=environement.yml` and activate the env.
 
-on cwa server repo run `gh repo set-default` and set our fork as default.
+in cwa server repo run `gh repo set-default` and set our fork as default.
 
 
-in this repo go to `evaluation` dir.
+in THIS repo go to `evaluation` dir.
 
 `dvc pull` the data
 
