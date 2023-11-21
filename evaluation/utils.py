@@ -41,9 +41,22 @@ def view_prs(
     git.reset("--hard", "origin/main")
     git.switch("main")
 
-    # sanity clean-up
-    #print([x.strip() for x in git.branch().split("\n")])
+    # sanity clean-up of unneeded local branches
+    local_branches = git.branch()
+    local_branches = [x.strip() for x in local_branches.split("\n")]
+    local_branches.remove("* main")
+    for branch in local_branches:
+        git.branch("-D", branch)
+    print("Cleaned up local branches.")
 
+    # sanity clean-up of unneeded remote branches
+    remote_branches = git.branch("-r")
+    remote_branches = [x.strip() for x in remote_branches.split("\n")]
+    branches_to_delete = [viewing_branch, real_patch_branch, pred_patch_branch]
+    for branch in branches_to_delete:
+        if f"origin/{branch}" in remote_branches:
+            git.push("origin", "--delete", branch)
+    print("Cleaned up remote branches.")
 
     # go to the base commit and create all needed branches from it
     git.checkout(base_commit)
