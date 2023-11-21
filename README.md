@@ -16,7 +16,7 @@ Code and data for paper "<a href="http://swe-bench.github.io/paper.pdf">SWE-benc
         <img alt="License" src="https://img.shields.io/badge/License-MIT-blue">
     </a>
 </p>
-
+-----------------------
 Please refer our [website](http://swe-bench.github.io) for the public leaderboard and the [change log](https://github.com/princeton-nlp/SWE-bench/blob/master/CHANGELOG.md) for information on the latest updates to the SWE-bench benchmark.
 
 ## 👋 Overview
