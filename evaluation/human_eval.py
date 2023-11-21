@@ -7,10 +7,11 @@ from utils import *
 def main(args, loglevel):
     logging.basicConfig(format="%(levelname)s: %(message)s", level=loglevel)    
 
-    os.chdir("../../")
+    while not os.path.isdir("SWE-bench/"):
+        os.chdir("../")
     dir = os.getcwd()
     cwa_server_path = dir + "/cwa-server/"
-    swe_bench_path = dir + "/SWE-bench/"
+    swe_bench_path = dir + "/SWE-bench"
 
 
     logging.info(f"Choose unevaluated PR number from https://docs.google.com/spreadsheets/d/1KU2sSywl2VTK6JdVa73eC9r1UbhtMP9yaKb2gF5qmw0/edit?usp=sharing")

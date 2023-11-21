@@ -61,6 +61,7 @@ def view_prs(
     # apply code changes
     git.switch(real_patch_branch)
     git.apply(real_patch_path, "--whitespace=fix")
+    git.add(all=True)
     git.commit("--all", "--message=applied real patch")
     git.push("--set-upstream", "origin", real_patch_branch)
     
@@ -68,6 +69,7 @@ def view_prs(
     try:
         git.switch(pred_patch_branch)
         git.apply(predicted_patch_path, "--whitespace=fix")
+        git.add(all=True)
         git.commit("--all", "--message=apply predicted patch")
         git.push("--set-upstream", "origin", pred_patch_branch)
     except GitCommandError as e:
