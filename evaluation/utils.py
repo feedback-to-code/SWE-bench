@@ -41,6 +41,10 @@ def view_prs(
     git.reset("--hard", "origin/main")
     git.switch("main")
 
+    # sanity clean-up
+    #print([x.strip() for x in git.branch().split("\n")])
+
+
     # go to the base commit and create all needed branches from it
     git.checkout(base_commit)
     git.branch(viewing_branch)
@@ -74,9 +78,9 @@ def view_prs(
         print("\nThis will show you the conflicts. It is possible that some hunks can be applied.")
         print("Take a look at the hunks that can/ cannot be applied - note interesting finding in Google Sheet.")
         print("What are the problems why it cannot be applied")
-        print("Try to modify the patch file so that it can be applied.")
+        print("Try to modify the patch file so that it can be applied. Delete/ change some hunks, lines, etc.")
         print("This might be of interest if there is just a tiny problem with some of the hunks.")
-        print("If you were successful fully applying the patch, put the code of your")
+        print("If you were successful modifying the patch so that it can by applied, put the code of your")
         print("modified patch file into the Google Sheet column modified_patch.")
         print("Take care when pasting the patch it format is like this")
         print("that it can be applied when reading from this table.")
