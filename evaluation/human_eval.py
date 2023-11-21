@@ -17,6 +17,7 @@ def main(args, loglevel):
     logging.info(f"And document your findings there.")
     logging.info(f"When documenting try to align with the format other people used.")
     logging.info(f"Feel free to add new columns if you want to point towards something that does not fit in the existing columns.")
+    logging.info(f"If this run fails or gets interrupted, run it again with the same PR number for a proper clean-up.")
     pr_number = input("PR number: ")
 
     try:
