@@ -7,8 +7,8 @@ see https://docs.conda.io/projects/miniconda/en/latest/#quick-command-line-insta
 
 have THIS repo and our fork of [cwa-server](https://github.com/feedback-to-code/cwa-server) cloned in your home dir on scorelab side-by-side.
 
-in THIS repo run `conda env create file=environment.yml` and activate the env.
-If this doesn't work, you might want to try `conda env create -f environment.yml`
+in THIS repo run `conda env create file=environment.yml` and activate the env (`conda activate swe-bench`).
+If this doesn't work, you might want to try `conda env create -f environment.yml` and then activate the env.
 
 Run `gh auth login` in order to set up the GitHub CLI
 in cwa server repo run `gh repo set-default` and set our fork as default.
