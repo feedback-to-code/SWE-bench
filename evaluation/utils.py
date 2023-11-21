@@ -1,6 +1,7 @@
 import re
 
 from git import Repo
+import git
 
 from git.exc import GitCommandError
 import sys
@@ -32,6 +33,7 @@ def view_prs(
     viewing_branch = f"viewing_branch_{pr_number}"
     real_patch_branch = f"real_patch_branch_{pr_number}"
     pred_patch_branch = f"pred_patch_branch_{pr_number}"
+    branches = [viewing_branch, real_patch_branch, pred_patch_branch]
 
     repo = Repo.init(repo_path)
     git = repo.git
@@ -41,22 +43,9 @@ def view_prs(
     git.reset("--hard", "origin/main")
     git.switch("main")
 
-    # sanity clean-up of unneeded local branches
-    local_branches = git.branch()
-    local_branches = [x.strip() for x in local_branches.split("\n")]
-    local_branches.remove("* main")
-    for branch in local_branches:
-        git.branch("-D", branch)
-    print("Cleaned up local branches.")
-
-    # sanity clean-up of unneeded remote branches
-    remote_branches = git.branch("-r")
-    remote_branches = [x.strip() for x in remote_branches.split("\n")]
-    branches_to_delete = [viewing_branch, real_patch_branch, pred_patch_branch]
-    for branch in branches_to_delete:
-        if f"origin/{branch}" in remote_branches:
-            git.push("origin", "--delete", branch)
-    print("Cleaned up remote branches.")
+    # sanity clean-ups
+    clean_local_branches(git)
+    clean_remote_branches(git, branches)
 
     # go to the base commit and create all needed branches from it
     git.checkout(base_commit)
@@ -121,31 +110,40 @@ def view_prs(
         except:
             print("Could not create PRs.")
 
+def clean_local_branches(git: git.cmd.Git):
+    # sanity clean-up of unneeded local branches
+    git.checkout("main")
+    local_branches = git.branch()
+    local_branches = [x.strip() for x in local_branches.split("\n")]
+    local_branches.remove("* main")
+    for branch in local_branches:
+        git.branch("-D", branch)
+    print("Cleaned up local branches.")
+
+def clean_remote_branches(git: git.cmd.Git, branches_to_delete: list):
+    # sanity clean-up of unneeded remote branches
+    remote_branches = git.branch("-r")
+    remote_branches = [x.strip() for x in remote_branches.split("\n")]
+    for branch in branches_to_delete:
+        if f"origin/{branch}" in remote_branches:
+            git.push("origin", "--delete", branch)
+    print("Cleaned up remote branches.")
 
 
 def cleanup_repo(repo_path: str, pr_number: int):
     viewing_branch = f"viewing_branch_{pr_number}"
     real_patch_branch = f"real_patch_branch_{pr_number}"
     pred_patch_branch = f"pred_patch_branch_{pr_number}"
+    branches = [viewing_branch, real_patch_branch, pred_patch_branch]
 
     repo = Repo.init(repo_path)
     git = repo.git
 
-    # delete branches on github - closes prs automatically
-    git.push("origin", "--delete", viewing_branch)
-    git.push("origin", "--delete", real_patch_branch)
-    try:
-        git.push("origin", "--delete", pred_patch_branch)
-    except:
-        print("Could not delete pred_patch_branch remote. It probably does not exist.")
-
-    # delete branches locally
-    git.checkout("main")
-    git.branch("-D", viewing_branch)
-    git.branch("-D", real_patch_branch)
-    try:
-        git.branch("-D", pred_patch_branch)
-    except:
-        print("Could not delete pred_patch_branch locally. It probably does not exist.")
+    clean_remote_branches(git, branches)
+    clean_local_branches(git)
 
     print("Successfully cleaned up!")
+
+    
+
+    
