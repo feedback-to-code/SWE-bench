@@ -9,8 +9,8 @@ def main(args, loglevel):
 
     os.chdir("../../")
     dir = os.getcwd()
-    cwa_server_path = dir + "/cwa-server/"
-    swe_bench_path = dir + "/SWE-bench/"
+    cwa_server_path = dir + "/cwa-server"
+    swe_bench_path = dir + "/SWE-bench"
 
 
     logging.info(f"Choose unevaluated PR number from https://docs.google.com/spreadsheets/d/1KU2sSywl2VTK6JdVa73eC9r1UbhtMP9yaKb2gF5qmw0/edit?usp=sharing")
@@ -41,7 +41,7 @@ def main(args, loglevel):
         view_prs(
             this["base_commit"],
             f"{swe_bench_path}/evaluation/tmp/real.patch",
-            f"{swe_bench_path}/SWE-bench/evaluation/tmp/predicted.patch",
+            f"{swe_bench_path}/evaluation/tmp/predicted.patch",
             cwa_server_path,
             pr_number,
         )
