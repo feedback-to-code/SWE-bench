@@ -7,9 +7,11 @@ from utils import *
 def main(args, loglevel):
     logging.basicConfig(format="%(levelname)s: %(message)s", level=loglevel)    
 
-    os.chdir("../../")
+    while not os.path.isdir("SWE-bench/"):
+        os.chdir("../")
     dir = os.getcwd()
     cwa_server_path = dir + "/cwa-server"
+
     swe_bench_path = dir + "/SWE-bench"
 
 
