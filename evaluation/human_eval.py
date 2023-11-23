@@ -10,7 +10,8 @@ def main(args, loglevel):
     while not os.path.isdir("SWE-bench/"):
         os.chdir("../")
     dir = os.getcwd()
-    cwa_server_path = dir + "/cwa-server/"
+    cwa_server_path = dir + "/cwa-server"
+
     swe_bench_path = dir + "/SWE-bench"
 
 
@@ -42,7 +43,7 @@ def main(args, loglevel):
         view_prs(
             this["base_commit"],
             f"{swe_bench_path}/evaluation/tmp/real.patch",
-            f"{swe_bench_path}/SWE-bench/evaluation/tmp/predicted.patch",
+            f"{swe_bench_path}/evaluation/tmp/predicted.patch",
             cwa_server_path,
             pr_number,
         )
