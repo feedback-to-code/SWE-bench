@@ -1,0 +1,166 @@
+{
+    "corona-warn-app__cwa-server-45": [
+        "corona-warn-app__cwa-server/.git/hooks/pre-rebase.sample",
+        "corona-warn-app__cwa-server/mvnw.cmd"
+    ],
+    "corona-warn-app__cwa-server-106": [
+        "corona-warn-app__cwa-server/services/distribution/src/main/java/app/coronawarn/server/services/distribution/crypto/CryptoProvider.java",
+        "corona-warn-app__cwa-server/services/distribution/src/main/java/app/coronawarn/server/services/distribution/exposureconfig/ExposureConfigurationProvider.java"
+    ],
+    "corona-warn-app__cwa-server-113": [
+        "corona-warn-app__cwa-server/services/submission/src/main/java/app/coronawarn/server/services/submission/verification/TanVerifier.java",
+        "corona-warn-app__cwa-server/tools/mock-server/data/version/v1/parameters/country/index"
+    ],
+    "corona-warn-app__cwa-server-135": [
+        "corona-warn-app__cwa-server/services/distribution/src/main/java/app/coronawarn/server/services/distribution/assembly/structure/directory/IndexDirectory.java",
+        "corona-warn-app__cwa-server/services/distribution/src/main/java/app/coronawarn/server/services/distribution/assembly/structure/directory/Directory.java"
+    ],
+    "corona-warn-app__cwa-server-232": [
+        "corona-warn-app__cwa-server/services/distribution/src/main/java/app/coronawarn/server/services/distribution/assembly/exposureconfig/validation/WeightValidationError.java",
+        "corona-warn-app__cwa-server/services/distribution/src/main/java/app/coronawarn/server/services/distribution/assembly/exposureconfig/validation/ExposureConfigurationValidator.java"
+    ],
+    "corona-warn-app__cwa-server-260": [
+        "corona-warn-app__cwa-server/services/distribution/src/main/java/app/coronawarn/server/services/distribution/assembly/structure/directory/IndexDirectory.java",
+        "corona-warn-app__cwa-server/services/distribution/src/main/java/app/coronawarn/server/services/distribution/assembly/structure/util/functional/IndexFunction.java"
+    ],
+    "corona-warn-app__cwa-server-272": [
+        "corona-warn-app__cwa-server/services/distribution/src/main/java/app/coronawarn/server/services/distribution/assembly/structure/directory/DirectoryOnDisk.java",
+        "corona-warn-app__cwa-server/services/distribution/src/main/java/app/coronawarn/server/services/distribution/assembly/structure/directory/IndexDirectoryOnDisk.java"
+    ],
+    "corona-warn-app__cwa-server-277": [
+        "corona-warn-app__cwa-server/services/distribution/src/main/java/app/coronawarn/server/services/distribution/assembly/structure/directory/IndexDirectory.java",
+        "corona-warn-app__cwa-server/services/submission/src/main/java/app/coronawarn/server/services/submission/verification/tan/IllegalTanAuthorizationFormatException.java"
+    ],
+    "corona-warn-app__cwa-server-299": [
+        "corona-warn-app__cwa-server/services/distribution/src/main/java/app/coronawarn/server/services/distribution/assembly/structure/directory/decorator/indexing/IndexingDecorator.java",
+        "corona-warn-app__cwa-server/services/distribution/src/main/java/app/coronawarn/server/services/distribution/assembly/structure/directory/IndexDirectory.java"
+    ],
+    "corona-warn-app__cwa-server-308": [
+        "corona-warn-app__cwa-server/services/distribution/src/main/java/app/coronawarn/server/services/distribution/assembly/structure/directory/IndexDirectory.java",
+        "corona-warn-app__cwa-server/services/distribution/src/main/java/app/coronawarn/server/services/distribution/assembly/structure/directory/Directory.java"
+    ],
+    "corona-warn-app__cwa-server-346": [
+        "corona-warn-app__cwa-server/services/distribution/src/main/java/app/coronawarn/server/services/distribution/assembly/appconfig/parsing/IncludeConstruct.java",
+        "corona-warn-app__cwa-server/services/distribution/src/main/java/app/coronawarn/server/services/distribution/assembly/structure/directory/IndexDirectory.java"
+    ],
+    "corona-warn-app__cwa-server-349": [
+        "corona-warn-app__cwa-server/services/distribution/src/main/java/app/coronawarn/server/services/distribution/assembly/appconfig/validation/MinimumRiskLevelValidationError.java",
+        "corona-warn-app__cwa-server/services/distribution/src/main/java/app/coronawarn/server/services/distribution/assembly/appconfig/validation/ValidationResult.java"
+    ],
+    "corona-warn-app__cwa-server-350": [
+        "corona-warn-app__cwa-server/scripts/wait-for-it/README.md",
+        "corona-warn-app__cwa-server/services/distribution/src/main/java/app/coronawarn/server/services/distribution/assembly/structure/directory/IndexDirectory.java"
+    ],
+    "corona-warn-app__cwa-server-352": [
+        "corona-warn-app__cwa-server/scripts/generate_keys.sh",
+        "corona-warn-app__cwa-server/scripts/wait-for-it/README.md"
+    ],
+    "corona-warn-app__cwa-server-378": [
+        "corona-warn-app__cwa-server/services/distribution/src/main/java/app/coronawarn/server/services/distribution/assembly/structure/directory/IndexDirectory.java",
+        "corona-warn-app__cwa-server/common/persistence/src/main/java/app/coronawarn/server/common/persistence/domain/validation/ValidRollingStartIntervalNumber.java"
+    ],
+    "corona-warn-app__cwa-server-386": [
+        "corona-warn-app__cwa-server/services/distribution/src/main/java/app/coronawarn/server/services/distribution/assembly/structure/directory/IndexDirectory.java",
+        "corona-warn-app__cwa-server/services/distribution/src/main/java/app/coronawarn/server/services/distribution/assembly/structure/directory/IndexDirectoryOnDisk.java"
+    ],
+    "corona-warn-app__cwa-server-387": [
+        "corona-warn-app__cwa-server/services/distribution/src/main/java/app/coronawarn/server/services/distribution/assembly/structure/directory/IndexDirectory.java",
+        "corona-warn-app__cwa-server/.git/hooks/pre-rebase.sample"
+    ],
+    "corona-warn-app__cwa-server-388": [
+        "corona-warn-app__cwa-server/.mvn/wrapper/MavenWrapperDownloader.java",
+        "corona-warn-app__cwa-server/services/distribution/src/main/java/app/coronawarn/server/services/distribution/assembly/appconfig/YamlLoader.java"
+    ],
+    "corona-warn-app__cwa-server-406": [
+        "corona-warn-app__cwa-server/services/submission/src/main/java/app/coronawarn/server/services/submission/verification/TanVerifier.java",
+        "corona-warn-app__cwa-server/services/submission/src/main/java/app/coronawarn/server/services/submission/verification/VerificationServerClient.java"
+    ],
+    "corona-warn-app__cwa-server-419": [
+        "corona-warn-app__cwa-server/services/distribution/src/main/java/app/coronawarn/server/services/distribution/assembly/structure/directory/IndexDirectory.java",
+        "corona-warn-app__cwa-server/services/submission/src/main/java/app/coronawarn/server/services/submission/verification/TanVerifier.java"
+    ],
+    "corona-warn-app__cwa-server-422": [
+        "corona-warn-app__cwa-server/services/distribution/src/main/java/app/coronawarn/server/services/distribution/objectstore/client/S3ClientWrapper.java",
+        "corona-warn-app__cwa-server/services/distribution/src/main/java/app/coronawarn/server/services/distribution/objectstore/client/ObjectStoreClient.java"
+    ],
+    "corona-warn-app__cwa-server-424": [
+        "corona-warn-app__cwa-server/services/distribution/src/main/java/app/coronawarn/server/services/distribution/assembly/structure/directory/IndexDirectory.java",
+        "corona-warn-app__cwa-server/services/distribution/src/main/java/app/coronawarn/server/services/distribution/assembly/structure/directory/IndexDirectoryOnDisk.java"
+    ],
+    "corona-warn-app__cwa-server-429": [
+        "corona-warn-app__cwa-server/.git/hooks/pre-rebase.sample",
+        "corona-warn-app__cwa-server/.git/hooks/fsmonitor-watchman.sample"
+    ],
+    "corona-warn-app__cwa-server-431": [
+        "corona-warn-app__cwa-server/services/submission/src/main/java/app/coronawarn/server/services/submission/verification/TanVerifier.java",
+        "corona-warn-app__cwa-server/services/distribution/src/main/java/app/coronawarn/server/services/distribution/assembly/io/IO.java"
+    ],
+    "corona-warn-app__cwa-server-436": [
+        "corona-warn-app__cwa-server/services/distribution/src/main/java/app/coronawarn/server/services/distribution/assembly/appconfig/validation/ConfigurationValidator.java",
+        "corona-warn-app__cwa-server/services/distribution/src/main/java/app/coronawarn/server/services/distribution/assembly/appconfig/parsing/NoMessageBuilderOnClassException.java"
+    ],
+    "corona-warn-app__cwa-server-441": [
+        "corona-warn-app__cwa-server/services/distribution/src/main/java/app/coronawarn/server/services/distribution/assembly/structure/directory/IndexDirectory.java",
+        "corona-warn-app__cwa-server/services/distribution/src/main/java/app/coronawarn/server/services/distribution/assembly/structure/util/ImmutableStack.java"
+    ],
+    "corona-warn-app__cwa-server-463": [
+        "corona-warn-app__cwa-server/services/submission/src/main/java/app/coronawarn/server/services/submission/verification/TanVerifier.java",
+        "corona-warn-app__cwa-server/services/distribution/src/main/java/app/coronawarn/server/services/distribution/assembly/structure/directory/Directory.java"
+    ],
+    "corona-warn-app__cwa-server-466": [
+        "corona-warn-app__cwa-server/services/distribution/src/main/java/app/coronawarn/server/services/distribution/assembly/appconfig/validation/ValidationResult.java",
+        "corona-warn-app__cwa-server/services/distribution/src/main/java/app/coronawarn/server/services/distribution/assembly/appconfig/validation/ValidationError.java"
+    ],
+    "corona-warn-app__cwa-server-541": [
+        "corona-warn-app__cwa-server/services/distribution/src/main/java/app/coronawarn/server/services/distribution/assembly/structure/directory/IndexDirectory.java",
+        "corona-warn-app__cwa-server/services/submission/src/main/java/app/coronawarn/server/services/submission/verification/Tan.java"
+    ],
+    "corona-warn-app__cwa-server-551": [
+        "corona-warn-app__cwa-server/docker-compose-test-secrets/private.pem",
+        "corona-warn-app__cwa-server/services/submission/api_v1.json"
+    ],
+    "corona-warn-app__cwa-server-572": [
+        "corona-warn-app__cwa-server/services/distribution/src/main/java/app/coronawarn/server/services/distribution/assembly/appconfig/structure/directory/AppConfigurationDirectory.java",
+        "corona-warn-app__cwa-server/.git/hooks/pre-rebase.sample"
+    ],
+    "corona-warn-app__cwa-server-573": [
+        "corona-warn-app__cwa-server/services/distribution/src/main/java/app/coronawarn/server/services/distribution/assembly/diagnosiskeys/structure/directory/DiagnosisKeysDirectory.java",
+        "corona-warn-app__cwa-server/scripts/wait-for-it/wait-for-it.sh"
+    ],
+    "corona-warn-app__cwa-server-624": [
+        "corona-warn-app__cwa-server/services/distribution/src/main/java/app/coronawarn/server/services/distribution/assembly/structure/directory/IndexDirectory.java",
+        "corona-warn-app__cwa-server/services/distribution/src/main/java/app/coronawarn/server/services/distribution/assembly/appconfig/parsing/NoMessageBuilderOnClassException.java"
+    ],
+    "corona-warn-app__cwa-server-629": [
+        "corona-warn-app__cwa-server/scripts/wait-for-it/README.md",
+        "corona-warn-app__cwa-server/scripts/wait-for-it/wait-for-it.sh"
+    ],
+    "corona-warn-app__cwa-server-642": [
+        "corona-warn-app__cwa-server/services/distribution/src/main/java/app/coronawarn/server/services/distribution/assembly/structure/directory/IndexDirectory.java",
+        "corona-warn-app__cwa-server/services/distribution/src/main/java/app/coronawarn/server/services/distribution/assembly/structure/directory/decorator/indexing/IndexingDecorator.java"
+    ],
+    "corona-warn-app__cwa-server-652": [
+        "corona-warn-app__cwa-server/services/distribution/src/main/java/app/coronawarn/server/services/distribution/assembly/structure/directory/IndexDirectory.java",
+        "corona-warn-app__cwa-server/services/distribution/src/main/java/app/coronawarn/server/services/distribution/assembly/structure/directory/IndexDirectoryOnDisk.java"
+    ],
+    "corona-warn-app__cwa-server-659": [
+        "corona-warn-app__cwa-server/services/distribution/src/main/java/app/coronawarn/server/services/distribution/assembly/structure/directory/IndexDirectory.java",
+        "corona-warn-app__cwa-server/services/distribution/src/main/java/app/coronawarn/server/services/distribution/assembly/structure/util/functional/CheckedFunction.java"
+    ],
+    "corona-warn-app__cwa-server-676": [
+        "corona-warn-app__cwa-server/services/distribution/src/main/java/app/coronawarn/server/services/distribution/assembly/appconfig/parsing/NoMessageBuilderOnClassException.java",
+        "corona-warn-app__cwa-server/services/distribution/src/main/java/app/coronawarn/server/services/distribution/assembly/structure/directory/Directory.java"
+    ],
+    "corona-warn-app__cwa-server-783": [
+        "corona-warn-app__cwa-server/services/distribution/src/main/java/app/coronawarn/server/services/distribution/assembly/structure/directory/IndexDirectory.java",
+        "corona-warn-app__cwa-server/services/distribution/src/main/java/app/coronawarn/server/services/distribution/assembly/structure/directory/Directory.java"
+    ],
+    "corona-warn-app__cwa-server-972": [
+        "corona-warn-app__cwa-server/scripts/generate_keys.sh",
+        "corona-warn-app__cwa-server/services/distribution/src/main/java/app/coronawarn/server/services/distribution/assembly/structure/directory/decorator/indexing/IndexingDecorator.java"
+    ],
+    "corona-warn-app__cwa-server-1965": [
+        "corona-warn-app__cwa-server/services/distribution/src/main/java/app/coronawarn/server/services/distribution/assembly/structure/directory/IndexDirectory.java",
+        "corona-warn-app__cwa-server/services/distribution/src/main/java/app/coronawarn/server/services/distribution/assembly/structure/directory/IndexDirectoryOnDisk.java"
+    ]
+}
