@@ -173,3 +173,5 @@ analysis/benchmark/plots/
 analysis/evaluation/*.csv
 analysis/evaluation/*.pdf
 /data
+/feedback-to-code__cwa-server
+/corona-warn-app__cwa-server
