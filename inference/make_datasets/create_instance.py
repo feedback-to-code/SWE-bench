@@ -18,8 +18,74 @@ except:
 logging.basicConfig(level=logging.INFO, format="%(asctime)s %(levelname)s %(message)s")
 logger = logging.getLogger(__name__)
 
+PATCH_EXAMPLE = """--- a/File.java
++++ b/File.java
+@@ -3,38 +3,45 @@ import java.util.List;
 
-PATCH_EXAMPLE = """--- a/file.py
+ public class File {
+     public static int euclidean(int a, int b) {
+-        while (b != 0) {
+-            int temp = b;
+-            b = a % b;
+-            a = temp;
++        if (b == 0) {
++            return a;
+         }
+-        return a;
++        return euclidean(b, a % b);
+     }
+
+     public static List<Point> bresenham(int x0, int y0, int x1, int y1) {
+         List<Point> points = new ArrayList<>();
+         int dx = Math.abs(x1 - x0);
+         int dy = Math.abs(y1 - y0);
+-        int sx = (x0 < x1) ? 1 : -1;
+-        int sy = (y0 < y1) ? 1 : -1;
+-        int err = dx - dy;
++        int x = x0, y = y0;
++        int sx = (x0 > x1) ? -1 : 1;
++        int sy = (y0 > y1) ? -1 : 1;
+
+-        while (true) {
+-            points.add(new Point(x0, y0));
+-            if (x0 == x1 && y0 == y1) {
+-                break;
+-            }
+-            int e2 = 2 * err;
+-            if (e2 > -dy) {
++        if (dx > dy) {
++            double err = dx / 2.0;
++            while (x != x1) {
++                points.add(new Point(x, y));
+                 err -= dy;
+-                x0 += sx;
++                if (err < 0) {
++                    y += sy;
++                    err += dx;
++                }
++                x += sx;
+             }
+-            if (e2 < dx) {
+-                err += dx;
+-                y0 += sy;
++        } else {
++            double err = dy / 2.0;
++            while (y != y1) {
++                points.add(new Point(x, y));
++                err -= dx;
++                if (err < 0) {
++                    x += sx;
++                    err += dy;
++                }
++                y += sy;
+             }
+         }
+
++        points.add(new Point(x, y));
+         return points;
+     }"""
+
+PYTHON_PATCH_EXAMPLE = """--- a/file.py
 +++ b/file.py
 @@ -1,27 +1,35 @@
  def euclidean(a, b):
@@ -74,8 +140,62 @@ PATCH_EXAMPLE = """--- a/file.py
 +    points.append((x, y))
      return points"""
 
+FULL_GENERATION_EXAMPLE = """[start of /src/Bresenham.java]
+import java.util.ArrayList;
+import java.util.List;
 
-FULL_GENERATION_EXAMPLE = """[start of /src/this_file.py]
+import geometry.Point;
+
+public class Bresenham {
+    public static List<Point> bresenham(int x0, int y0, int x1, int y1) {
+        List<Point> points = new ArrayList<>();
+        int dx = Math.abs(x1 - x0);
+        int dy = Math.abs(y1 - y0);
+        int x = x0, y = y0;
+        int sx = (x0 > x1) ? -1 : 1;
+        int sy = (y0 > y1) ? -1 : 1;
+
+        if (dx > dy) {
+            double err = dx / 2.0;
+            while (x != x1) {
+                points.add(new Point(x, y));
+                err -= dy;
+                if (err < 0) {
+                    y += sy;
+                    err += dx;
+                }
+                x += sx;
+            }
+        } else {
+            double err = dy / 2.0;
+            while (y != y1) {
+                points.add(new Point(x, y));
+                err -= dx;
+                if (err < 0) {
+                    x += sx;
+                    err += dy;
+                }
+                y += sy;
+            }
+        }
+
+        points.add(new Point(x, y));
+        return points;
+    }
+}
+[end of /src/Bresenham.java]
+[start of /src/geometry/Point.java]
+public class Point {
+    int x, y;
+
+    public Point(int x, int y) {
+        this.x = x;
+        this.y = y;
+    }
+}
+[end of /src/geometry/Point.java]"""
+
+PYTHON_FULL_GENERATION_EXAMPLE = """[start of /src/this_file.py]
 import os
 
 def euclidean(a, b):
