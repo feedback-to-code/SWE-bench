@@ -1,36 +1,13 @@
-from langchain.embeddings import CacheBackedEmbeddings, OpenAIEmbeddings
-from langchain.storage import (
-    LocalFileStore,
-)
-from langchain.embeddings.openai import OpenAIEmbeddings
-
 import numpy as np
 from tqdm import tqdm
 
 from utils import clone_repo, get_code_files, save_dict_to_json, get_dataset_from_huggingface
 from create_embedding_dict import get_embedding_dict
 
-from chromadb.utils import embedding_functions
-
-def get_embedder():
-    embeddings_model = OpenAIEmbeddings()
-    # embeddings_model = embedding_functions.DefaultEmbeddingFunction()
-    fs = LocalFileStore("./cache/")
-    cached_embedder = CacheBackedEmbeddings.from_bytes_store(
-        embeddings_model, fs, namespace=embeddings_model.model
-    )
-    return cached_embedder
-
-
-EMBEDDING_MODEL = get_embedder()
-
 
 def get_cosine_similarity(query, document, embedding_dict):
-    query_embedding = EMBEDDING_MODEL.embed_query(query)
-    document_embedding = EMBEDDING_MODEL.embed_documents([document])[0]
-    # query_embedding = embedding_dict[query]
-    # document_embedding = embedding_dict[document]
-    # turn query_embedding and document_embedding into numpy arrays
+    query_embedding = embedding_dict[query]
+    document_embedding = embedding_dict[document]
     query_embedding = np.array(query_embedding)
     document_embedding = np.array(document_embedding)
     return query_embedding.dot(document_embedding) / (
@@ -59,8 +36,8 @@ def main(
     dataset_name_or_path,
 ):
     dataset, dataset_name = get_dataset_from_huggingface(dataset_name_or_path)
-    # embedding_dict = get_embedding_dict(dataset_name_or_path)
-    embedding_dict = {}
+    embedding_dict = get_embedding_dict(dataset_name_or_path)
+    # embedding_dict = {}
     retrieval_dict = {}
     # iterate over every code change in the dataset
     # checkout the repo to the base commit
@@ -83,4 +60,10 @@ def main(
     print("Saving retrieval dict to json ...")
     save_dict_to_json(retrieval_dict, f"{dataset_name}-retrieval")
 
-main("feedback-to-code/cwa-server-task-instances")
+
+def retrieve_file(repository_name):
+    main(repository_name)
+
+
+if __name__ == "__main__":
+    main("feedback-to-code/cwa-server-task-instances")
