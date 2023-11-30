@@ -114,6 +114,7 @@ def view_prs(
 
 def clean_local_branches(git: git.cmd.Git):
     # sanity clean-up of unneeded local branches
+    git.stash()
     git.checkout("main")
     local_branches = git.branch()
     local_branches = [x.strip() for x in local_branches.split("\n")]
